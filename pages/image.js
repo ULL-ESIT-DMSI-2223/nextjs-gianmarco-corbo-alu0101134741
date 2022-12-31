@@ -9,8 +9,8 @@ const Image = () => {
     "Search Bears with Paint Brushes the Starry Night, painted by Vincent Van Gogh.."
   );
 
-  const generateImage = async () => {
-    const response = await fetch('/openai/generateimage', {
+  const generateImageRequest = async () => {
+    const response = await fetch("https://api.openai.com/v1/images/generations", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const Image = () => {
             rows="10"
             cols="40"
           />
-          <button onClick={generateImage}>Generate an Image</button>
+          <button onClick={generateImageRequest}>Generate an Image</button>
           {result.length > 0 ? (
             <img className="result-image" src={result} alt="result" />
           ) : (
