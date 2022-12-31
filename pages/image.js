@@ -8,21 +8,21 @@ const Image = () => {
   const [placeholder, setPlaceholder] = useState(
     "Search Bears with Paint Brushes the Starry Night, painted by Vincent Van Gogh.."
   );
-  const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
 
   const generateImage = async () => {
-    setPlaceholder(`Search ${prompt}..`);
-    setLoading(true);
-    const res = await openai.createImage({
-      prompt: prompt,
-      n: 1,
-      size: "512x512",
+    const response = await fetch('/openai/generateimage', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt,
+        size: "512x512",
+      }),
     });
     setLoading(false);
-    setResult(res.data.data[0].url);
+    const data = await response.json();
+    setResult(data.result);
   };
   return (
     <div className="app-main">
