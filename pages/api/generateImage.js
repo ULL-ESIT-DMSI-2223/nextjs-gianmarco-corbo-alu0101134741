@@ -8,8 +8,8 @@ const configuration = new Configuration({
 export default async function (req, res) {
     const response = await openai.createImage({
         prompt: req.body.prompt,
-        n: 1,
-        size: "1024x1024",
+        n: req.body.n,
+        size: req.body.size,
       });
       image_url = response.data.data[0].url;
     res.status(200).json({ result: completion.data.choices[0].text });
