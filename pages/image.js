@@ -10,17 +10,17 @@ const Image = () => {
   );
 
   const generateImageRequest = async () => {
-    const response = await fetch("https://api.openai.com/v1/images/generations", {
-      method: 'POST',
+    const response = await fetch("api/generateImage", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         prompt,
+        n: 1,
         size: "512x512",
       }),
     });
-    setLoading(false);
     const data = await response.json();
     setResult(data.result);
   };
