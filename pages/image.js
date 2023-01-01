@@ -10,7 +10,7 @@ const Image = () => {
   );
 
   const generateImageRequest = async () => {
-    const response = await fetch("api/generateImage", {
+    const response = await fetch("/api/generateImage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
