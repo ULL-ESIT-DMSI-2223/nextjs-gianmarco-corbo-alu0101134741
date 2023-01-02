@@ -6,11 +6,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
+  console.log(req.body);
   const response = await openai.createImage({
       prompt: req.body.prompt,
       n: 1,
       size: req.body.size,
     });
-    image_url = response.data.data[0].url;
+    const image_url = response.data.data[0].url;
+    res.status(200).json({ result: image_url });
 }
 
