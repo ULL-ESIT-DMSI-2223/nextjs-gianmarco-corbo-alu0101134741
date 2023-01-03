@@ -61,9 +61,11 @@ Esta función que se encarga de todo esto, llamada **generateImageRequest()** se
 
 ![paginaImagejs1](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/paginaImagejs1.png)
 
-![paginaImagejs2]("https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/paginaImagejs2.png)
+![paginaImagejs2](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/paginaImagejs2.png)
 
 Añadimos en el archivo **index.js** el enlace a la ruta **/image**. <br>
 
 ![indexjs](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/indexjs.png)
+
+
 
