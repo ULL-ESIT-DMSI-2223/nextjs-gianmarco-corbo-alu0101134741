@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./pet.module.css";
 import { Configuration, OpenAIApi } from "openai";
 
 const Image = () => {
@@ -25,13 +26,13 @@ const Image = () => {
     setResult(data.result);
   };
   return (
-    <div className="app-main">
+    <div className="appMain">
       {
         <>
           <h2>Generate an Image using Open AI API</h2>
 
           <textarea
-            className="app-input"
+            className={styles.appMain}
             placeholder={placeholder}
             onChange={(e) => setPrompt(e.target.value)}
             rows="10"
@@ -39,7 +40,7 @@ const Image = () => {
           />
           <button onClick={generateImageRequest}>Generate an Image</button>
           {result.length > 0 ? (
-            <img className="result-image" src={result} alt="result" />
+            <img className={styles.resultImage} src={result} alt="result" />
           ) : (
             <></>
           )}
