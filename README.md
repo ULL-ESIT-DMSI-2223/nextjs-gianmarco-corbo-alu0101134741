@@ -6,6 +6,20 @@
 
 </p>
 
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+
+  **1.** [Código para la implementación del punto final de la API del generador de nombres para mascotas](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741#1-c%C3%B3digo-para-la-implementaci%C3%B3n-del-punto-final-de-la-api-del-generador-de-nombres-para-mascotas)
+
+  **2.** [Código para la página del generador de nombres para mascotas](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741#2-c%C3%B3digo-para-la-p%C3%A1gina-del-generador-de-nombres-para-mascotas)
+  
+  **3.** [Código para la implementación del punto final de la API del generador de imágenes](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741#3-c%C3%B3digo-para-la-implementaci%C3%B3n-del-punto-final-de-la-api-del-generador-de-im%C3%A1genes)
+  
+  **4.** [Código para la página del generador de imágenes](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741#4-c%C3%B3digo-para-la-p%C3%A1gina-del-generador-de-im%C3%A1genes)
+  
+  **5.** [Ejercicios de REST](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741#5-ejercicios-de-rest)
+</details>
+
 ## 1. Código para la implementación del punto final de la API del generador de nombres para mascotas
 
 Para poder implementar esta funcionalidad, se ha utilizado la librería de OpenAi, la cual se puede instalar con el siguiente comando:
