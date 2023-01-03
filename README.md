@@ -10,7 +10,7 @@ excerpt_separator: "<!--more-->"
 
 </p>
 
-## 1. Código para la implementación del generador de nombres OpenAi
+## 1. Código para la implementación del punto final de la API del generador de nombres para mascotas
 
 Para poder implementar esta funcionalidad, se ha utilizado la librería de OpenAi, la cual se puede instalar con el siguiente comando:
 
@@ -18,7 +18,7 @@ Para poder implementar esta funcionalidad, se ha utilizado la librería de OpenA
 npm install openai-api
 ```
 Tras eso necesitamos configurar la API key, para ello, se debe crear un archivo .env en la raíz del proyecto, y añadir la key que se ha obtenido en la página de OpenAi. <br>
-Ahora creamos el archivo contenente la api con la que se comunicará nuestra página con el servicio web de OpenAi
+Ahora creamos el archivo conteniente el punto final de la api con la que se comunicará nuestra página con el servicio web de OpenAi
 Para ello creamos el archivo api/openai.js, ya que todos los archivos en la carpeta api se mapean como **api/*** , y serán considerados puntos finales de un API. <br>
 Para que la ruta sea accesible como API, se debe exportar como una función de Node.js. <br>
 Dentro de la función es donde llamamos a la función **createCompletion** de OpenAi, pasando los parametros necesarios para que nos devuelva el JSON contenente el texto generado. <br>
@@ -27,6 +27,8 @@ Contienen una serie de parametros y metodos que nos permite facilitar las solici
 <br>
 
 ![generatejs](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/generatejs.png)
+
+## 2. Código para la página del generador de nombres para mascotas
 
 Posteriormente, creamos un archivo llamado **pet.js**, el cual se encargará de hacer la petición a la api de OpenAi, y devolver el texto generado. <br>
 Al crear un archivo en /pages se crea una ruta dinámica, en este caso, la ruta es **/pet**. <br>
@@ -42,12 +44,14 @@ Tras eso llamamos la función **setResult** para guardar el texto generado en la
 
 ![paginaPetjs](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/paginaPetjs.png)
 
-## 2. Código para la implementación del generador de imágenes
+## 3. Código para la implementación del punto final de la API del generador de imágenes
 
 Como hemos hecho con el generador de nombres, primero creamos en la carpeta **api** el archivo **generateImage.js**, donde se encuentra el punto final de la api que se encarga de comunicarse con el servicio web de OpenAi de generación de imagenes. <br>
 Hacemos lo mismo que en el caso anterior, pero esta vez usaremos la función **createImage()** de OpenAi, pasando los parametros necesarios para que nos devuelva el JSON conteniente la imagen generada, que en este caso son el prompt en el que se basará para generar la/las imagen/es, el número de imagenes a generar y el tamaño de la/las imagen/es. <br>
 
 ![generateImagejs](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/generateImagejs.png)
+
+## 4. Código para la página del generador de imágenes
 
 Posteriormente, creamos un archivo llamado **image.js**, el cual se encargará de hacer la petición al servicio web de OpenAi, y devolver la imagen generada. <br>
 Volvemos a usar **fetch** para hacer la petición, los parametros del body son los anteriormente mencionados. <br>
@@ -67,5 +71,64 @@ Añadimos en el archivo **index.js** el enlace a la ruta **/image**. <br>
 
 ![indexjs](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/indexjs.png)
 
+
+## 5. Ejercicios de REST
+
+Se realizarán una serie de peticiones a la api de OpenAi, usando el cliente Thunder Client. <br>
+
+### 5.1. Petición para obtener los modelos disponibles
+
+En este caso, usaremos el método **GET** para obtener los modelos disponibles, mientras que el enlace a la api es https://api.openai.com/v1/models <br>
+No hará falta añadir ningún parámetro en el body, pero sí hay que añadir en el apartado de **Auth** la API key de OpenAi que obtuvimos. <br>
+![restexercise1](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/restexercise1.png)
+
+### 5.2. Petición para obtener el detalle de un modelo
+
+Aquí también usaremos el método **GET**, pero en este caso el enlace a la api será https://api.openai.com/v1/models/text-davinci-003 , ya que estamos solicitando la información de un modelo en concreto. <br>
+Tampoco en este caso hay que añadir ningún parámetro en el body, y el apartado de **Auth** de la API key de OpenAi se guarda de la petición anterior. <br>
+![restexercise2](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/restexercise2.png)
+
+### 5.3. Petición para generar una imagen adorable
+
+En este caso, usaremos el método **POST**, ya que queremos enviar datos para la creación de un recurso. <br>
+El enlace a la api será https://api.openai.com/v1/images/generations , y, esta vez, hará falta en el body especificar los siguientes parámetros: <br>
+```JSON
+{
+  "prompt": {Aquí va la descripcion de la imagen},
+  "n": {Aquí va el número de imágenes que queremos generar},
+  "size": {Aquí va el tamaño de la imagen que queremos generar},
+}
+```
+![restexercise3](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/restexercise2.png)
+
+### 5.4. Petición para generar una completion
+
+Aquí también usaremos el método **POST** con el enlace https://api.openai.com/v1/completions . <br>
+En este caso, el body será el siguiente: <br>
+```JSON
+{
+  "model": "text-davinci-003",
+  "prompt": "Say goodbye!",
+  "max_tokens": 5,
+  "temperature": 0.6,
+  "top_p": 1,
+  "n": 2,
+  "stream": false,
+  "logprobs": null,
+  "stop": "\n"
+}
+```
+![restexercise4](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/restexercise4.png)
+
+### 5.5. Petición para comprobar si una frase contiene palabras problemáticas
+
+En este caso también usaremos el método **POST** con el enlace https://api.openai.com/v1/moderations , para comprobar si una frase contiene palabras problemáticas. <br>
+El body será el siguiente: <br>
+```JSON
+{
+  "input": {Aquí va la frase que queremos comprobar}
+}
+```
+![restexercise5](https://github.com/ULL-ESIT-DMSI-2223/nextjs-gianmarco-corbo-alu0101134741/blob/main/docs/images/restexercise5.png)
 
 
