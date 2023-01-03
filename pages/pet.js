@@ -3,6 +3,9 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "./pet.module.css";
 
+/*
+
+*/
 const Pet = () => {
     const [animalInput, setAnimalInput] = useState("");
     const [result, setResult] = useState();
@@ -45,5 +48,6 @@ const Pet = () => {
     </div>
   );
 };
+
 
 export default Pet;
