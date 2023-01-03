@@ -26,13 +26,13 @@ const Image = () => {
     setResult(data.result);
   };
   return (
-    <div className="appMain">
+    <div className="app-main">
       {
         <>
           <h2>Generate an Image using Open AI API</h2>
 
           <textarea
-            className={styles.appMain}
+            className="app-input"
             placeholder={placeholder}
             onChange={(e) => setPrompt(e.target.value)}
             rows="10"
@@ -40,7 +40,7 @@ const Image = () => {
           />
           <button onClick={generateImageRequest}>Generate an Image</button>
           {result.length > 0 ? (
-            <img className={styles.resultImage} src={result} alt="result" />
+            <img className="result-image" src={result} alt="result" />
           ) : (
             <></>
           )}
