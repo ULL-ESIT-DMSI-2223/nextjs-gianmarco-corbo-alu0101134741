@@ -1,7 +1,3 @@
----
-title: "Informe practica introducción a NextJs"
-excerpt_separator: "<!--more-->"
----
 
 <br />
 <p align="center">
